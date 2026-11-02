@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The E-Millennial Store</title>
+    <meta name="description" content="Gadgets every Millennial and Gen-Z should have: phones, laptops, smartwatches and more, with Paystack checkout in Ghana Cedis.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Paystack Script -->
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+</head>
+<body>
+    
+    <!-- ============================================ -->
+    <!-- HEADER / INTRO SECTION                       -->
+    <!-- ============================================ -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <h1>EMS</h1>
+                <span class="logo-tagline">The E-Millennial Store</span>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#intro">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#products">Shop</a></li>
+                </ul>
+            </nav>
+            
+            <button id="cartButton" class="cart-btn" aria-label="Open shopping cart">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 01-8 0"/>
+                </svg>
+                <span>Cart</span>
+                <span id="cartCount" class="cart-badge">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ============================================ -->
+    <!-- INTRO SECTION                               -->
+    <!-- ============================================ -->
+    <section id="intro" class="intro-section">
+        <div class="container">
+            <div class="intro-content">
+                <h2>Welcome to The E-Millennial Store</h2>
+                <p class="intro-text">
+                    Discover gadgets every 'Millennial' or 'Gen-Z' should have today. 
+                    We've got mobile phones, laptops, smartwatches and other gadgets. 
+                    Explore all our gadgets and choose the ones that suit you.
+                </p>
+                <a href="#products" class="cta-button">Shop Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- ABOUT SECTION                               -->
+    <!-- ============================================ -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2>About E-Millennial Store</h2>
+            <div class="about-content">
+                <p>
+                    E-Millennial Store is a hypothetical online store for gadgets we believe 
+                    every 'Millennial' or 'Gen-Z' should have today. We've got mobile phones, 
+                    laptops, smartwatches and other gadgets. 
+                </p>
+                <p>
+                    Our mission is to provide quality tech products to millennials across Africa. 
+                    We curate the best gadgets that combine style, functionality, and affordability.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- PRODUCTS / SHOP SECTION                     -->
+    <!-- ============================================ -->
+    <section id="products" class="products-section">
+        <div class="container">
+            <h2>Our Gadgets</h2>
+            <div id="productGrid" class="product-grid">
+                <!-- Products will be rendered by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- FOOTER                                     -->
+    <!-- ============================================ -->
+    <footer id="footer" class="footer">
+        <div class="container footer-container">
+            <div class="footer-logo">
+                <h2>EMS</h2>
+                <span>The E-Millennial Store</span>
+            </div>
+            <p class="footer-text">Designed and Crafted by a Frontend Ninja</p>
+        </div>
+    </footer>
+
+    <!-- ============================================ -->
+    <!-- SHOPPING CART MODAL                        -->
+    <!-- ============================================ -->
+    <div id="cartModal" class="modal-overlay">
+        <div class="modal-content cart-modal">
+            
+            <div class="modal-header">
+                <h2>Shopping Cart</h2>
+                <button id="closeCartBtn" class="close-btn" aria-label="Close cart">&times;</button>
+            </div>
+            
+            <!-- Section A: Cart Items -->
+            <div id="cartItemsContainer" class="cart-items-section">
+                <div id="cartItems">
+                    <!-- Cart items rendered by JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Section B: User Details -->
+            <div class="user-details-section">
+                <h3>Your Details</h3>
+                <form id="userForm" novalidate>
+                    <div class="form-group">
+                        <label for="userName">Full Name</label>
+                        <input 
+                            type="text" 
+                            id="userName" 
+                            placeholder="Enter your full name"
+                            required
+                        >
+                        <span class="error-message" id="nameError"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="userEmail">Email Address</label>
+                        <input 
+                            type="email" 
+                            id="userEmail" 
+                            placeholder="Enter your email address"
+                            required
+                        >
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="userPhone">Phone Number</label>
+                        <input 
+                            type="tel" 
+                            id="userPhone" 
+                            placeholder="Enter your phone number"
+                            required
+                        >
+                        <span class="error-message" id="phoneError"></span>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Section C: Total Amount -->
+            <div class="total-section">
+                <h3>Total: <span id="totalAmount">GH₵ 0.00</span></h3>
+            </div>
+            
+            <!-- Section D: Actions -->
+            <div class="actions-section">
+                <button id="continueShoppingBtn" class="secondary-btn">Continue Shopping</button>
+                <button id="checkoutBtn" class="primary-btn">Checkout</button>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SUMMARY MODAL                              -->
+    <!-- ============================================ -->
+    <div id="summaryModal" class="modal-overlay">
+        <div class="modal-content summary-modal">
+            <div class="summary-success-icon">✅</div>
+            <h2 id="successMessage">Thank You, <span id="userNameDisplay"></span>!</h2>
+            <p class="summary-subtitle">Your order has been received successfully.</p>
+            
+            <div class="summary-divider"></div>
+            
+            <h3>Order Summary</h3>
+            <div id="orderSummary" class="order-summary">
+                <!-- Order items rendered by JavaScript -->
+            </div>
+            
+            <button id="okBtn" class="primary-btn">OK</button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
